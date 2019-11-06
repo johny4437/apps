@@ -14,7 +14,7 @@
     "react-native": "0.61.2",
     "react-native-gesture-handler": "^1.4.1",
     "react-navigation": "^4.0.10",
-    "realm": "^2.23.0-hotfix.1"
+    "realm": "3.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.6.4",
