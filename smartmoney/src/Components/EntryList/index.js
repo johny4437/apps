@@ -1,19 +1,27 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import { View, Text, StyleSheet, FlatList} from 'react-native';
 
-const DATA = [
-    {
-        key:"Padaria Asa Branca: $12"
-    },
-    {
-        key:"Supermercado Isadora: $190"
-    },
-    {
-        key:"Posto Ipiranga: $12"
-    }
-];
 
-const EntryList = ({entries}) => {
+import getEntries from '../../Services/Entries';
+const EntryList = () => {
+
+    [entries, setEntries] = useState([]);
+
+    useEffect(()=>{
+        
+        async function loadentries(){
+
+            const data = await getEntries();
+            setEntries(data);
+
+        }
+
+        loadentries();
+    },
+        console.log("EntryList :: useEffect")
+    ,[]);
+    
+    
     return (
         <View style={styles.container}>
             <Text style={styles.label}>Ultimos Lançamentos</Text>
