@@ -13,18 +13,18 @@ export const getEntries = async () => {
  
 }
 
-export const saveEntry = async value => {
+export const saveEntry = async (value, entry ={}) => {
   const realm = await getRealm();
   let data = {};
 
   const {amount} = value;
 
   try {
-    realm.write(() => {
+    realm.write( () => {
       data = {
-        id: 'ABC',
-        amount: amount,
-        entryAt: new Date(),
+        id:  value.id || entry.id || 'ABC',
+        amount: value.amount|| entry.amount ,
+        entryAt: value.entryAt|| entry.entryAt,
         isInit: false,
       };
 

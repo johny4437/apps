@@ -9,11 +9,7 @@ const entriesGrouped = [
     {key:'3', description:'Aluguel', amount:120},
     {key: '4', description:'Lazer', amount:250}
 ];
-const entries = [
-    {key:'1', description:'Padaria Isa', amount:34},
-    {key:'2',  description:'Posto Ipiranga',  amount:12},
-    {key:'3', description:'Supermercados Dia', amount:54}
-];
+
 
 const Main = ({navigation}) => {
     const currentBalance = 2145.64;
@@ -22,7 +18,7 @@ const Main = ({navigation}) => {
             <BalancePanel currentBalance={currentBalance}/>
             <Button title="Adicionar" onPress={()=>navigation.navigate('NewEntry')}></Button>
             <EntrySummary  entriesGrouped={ entriesGrouped}/>
-            <EntryList entries={entries}/>
+            <EntryList navigation={navigation}/>
         </View>
     )
 }

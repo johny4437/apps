@@ -1,10 +1,12 @@
-import React, {useState} from 'react'
-import { View, Text, StyleSheet,TextInput,Picker,Button, Us} from 'react-native'
+import React from 'react'
+import { View, Text, StyleSheet,TextInput,Picker,Button} from 'react-native'
 import {saveEntry} from '../../../Services/Entries';
 
 
 
 const NewEntryForm = () => {
+
+    const entry = navigation.getParam()
     const [amount, setAmount] = useState('2.00');
 
     const save = () =>{
