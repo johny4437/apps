@@ -1,54 +1,72 @@
-import React,{useState} from 'react'
-import { View, Text, StyleSheet,TextInput,Picker,Button} from 'react-native';
-import BalanceLabel from '../../Components/BalancePanel/BalancePanelLabel';
+import React, {useState} from 'react';
+import {View, TextInput, Button, StyleSheet} from 'react-native'; 
+
 import {saveEntry} from '../../Services/Entries';
+import {deleteEntry} from '../../Services/Entries';
 
 const NewEntry = ({navigation}) => {
-    const currentBalance = 2145.64;
-   
-    const entry = navigation.getParam('entry',{
-        id:null,
-        amount:0,
-        entryAt: new Date(),
-    });
-    const [amount, setAmount] = useState(`${entry.amount}`);
+  const currentBalance = 2065.35;
 
-    const save = () =>{
+  const entry = navigation.getParam('entry', {
+    id: null,
+    amount: '0.00',
+    entryAt: new Date(),
+  });
 
-        const value = {
-            amount:parseFloat(amount),
-        };
+  const [amount, setAmount] = useState(`${entry.amount}`);
 
-        console.log("NewEntry :: save", amount);
-        saveEntry(value, entry);
-    }
-    return (
-        <View>
-            <TextInput style={styles.input} 
-                onChangeText={(text) => setAmount(text)}
-                value={amount}
+  const onSave = () => {
+    const data = {
+      amount: parseFloat(amount),
+    };
 
-            />
+    console.log('NewEntry :: save ', data);
+    saveEntry(data, entry);
+    onClose();
+  };
 
-            
-            <TextInput style={styles.input} ></TextInput>
+  const onDelete = () => {
+    deleteEntry(entry);
+    onClose();
+  };
 
-            <Picker>
-                <Picker.Item label="Alimentação"/>
-                <Picker.Item label="transporte"/>
-            </Picker>
-            <Button title="Camera"></Button>
-            <Button title="GPS"></Button>
-            <Button title="Adicionar" onPress={save}></Button>
-            <Button title="Cancelar"></Button>
-        </View>
-    )
-}
+  const onClose = () => {
+    navigation.goBack();
+  };
+
+  return (
+    <View style={styles.container}>
+    
+
+      <View>
+        <TextInput
+          style={styles.input}
+          onChangeText={text => setAmount(text)}
+          value={amount}
+        />
+        <TextInput style={styles.input} />
+        <Button title="GPS" />
+        <Button title="Camera" />
+      </View>
+
+      <View>
+        <Button title="Adicionar" onPress={onSave} />
+        <Button title="Excluir" onPress={onDelete} />
+        <Button title="Cancelar" onPress={onClose} />
+      </View>
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
-    container:{
-        //flex:1,
-    }
-})
+  container: {
+    flex: 1,
+    padding: 10,
+  },
+  input: {
+    borderColor: '#000',
+    borderWidth: 1,
+  },
+});
 
 export default NewEntry;
