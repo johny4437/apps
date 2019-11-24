@@ -1,10 +1,11 @@
 import React from 'react'
 import { View, Text, StyleSheet} from 'react-native'
+import Colors from '../../../styles/Colors';
 
 const BalancePanelLabel = ({currentBalance}) => {
     return (
         <View style={styles.container}>
-            <Text style={styles.label}>Saldo Atual:</Text>
+            <Text style={styles.label}>Saldo Atual</Text>
     <Text style={styles.amount}>{currentBalance}</Text>
         </View>
     )
@@ -13,13 +14,15 @@ const BalancePanelLabel = ({currentBalance}) => {
 const styles = StyleSheet.create({
     container:{
         //flex:1,
+        alignItems:'center',
     },
     label:{
-        fontSize:18,
+        fontSize:14,
+        color: Colors.white,
     },
     amount:{
-        fontSize:20,
-        fontWeight:'bold',
+        fontSize:36,
+        color: Colors.white,
 
     }
 })

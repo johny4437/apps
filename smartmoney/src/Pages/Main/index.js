@@ -1,8 +1,10 @@
 import React from 'react'
-import { View, Text, StyleSheet,Button} from 'react-native';
+import { View, Text, StyleSheet} from 'react-native';
 import BalancePanel from '../../Components/BalancePanel';
 import EntrySummary from '../../Components/EntrySummary';
 import EntryList from '../../Components/EntryList';
+import Colors from '../../styles/Colors';
+
 const entriesGrouped = [
     {key:'1', description:'Alimentação', amount:200},
     {key:'2', description: 'Combustivel', amount:12},
@@ -16,7 +18,6 @@ const Main = ({navigation}) => {
     return (
         <View style={styles.container}>
             <BalancePanel currentBalance={currentBalance}/>
-            <Button title="Adicionar" onPress={()=>navigation.navigate('NewEntry')}></Button>
             <EntrySummary  entriesGrouped={ entriesGrouped}/>
             <EntryList navigation={navigation}/>
         </View>
@@ -26,7 +27,8 @@ const Main = ({navigation}) => {
 const styles = StyleSheet.create({
     container:{
         flex:1,
-        padding:10,
+        backgroundColor:Colors.background,
+        
     
     }
 })
