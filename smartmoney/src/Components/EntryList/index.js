@@ -30,7 +30,7 @@ const EntryList = ({navigation}) => {
             - {item.description} - ${item.amount}
           </Text>
           <Button title={item.id}
-          onPress={()=> navigation.navigate('NewEntry', {entrie:item})}
+          onPress={()=> navigation.navigate('NewEntry', {entry:item})}
           />
         </View>  
         )}
