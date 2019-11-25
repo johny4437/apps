@@ -14,10 +14,10 @@ const entriesGrouped = [
 
 
 const Main = ({navigation}) => {
-    const currentBalance = 2145.64;
+    
     return (
         <View style={styles.container}>
-            <BalancePanel currentBalance={currentBalance}/>
+            <BalancePanel  onNewEntryPress={()=>navigation.navigate('NewEntry') }/>
             <EntrySummary  entriesGrouped={ entriesGrouped}/>
             <EntryList navigation={navigation}/>
         </View>
