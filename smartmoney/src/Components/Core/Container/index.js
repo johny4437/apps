@@ -26,7 +26,7 @@ const Container = ({
                     <Icon name="insert-chart" style={styles.actionButtonIcon}/>
                 <Text style={styles.actionButtonText}>{actionButtonText}</Text>
                 </TouchableOpacity>
-          )}
+          )} 
             </View>
         )}
         </View>

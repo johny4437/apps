@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {View, Text,Button, FlatList, StyleSheet} from 'react-native';
 
 import EntryListItem from './EntryListItem';
+import Container from '../Core/Container';
 
 import {getEntries} from '../../Services/Entries';
 
@@ -20,22 +21,17 @@ const EntryList = ({navigation}) => {
   }, []);
 
   return (
-    <View>
-      <Text style={styles.title}>Últimos Lançamentos</Text>
+    <Container  title="Últimos lançamentos"
+    actionLabelText="últimos 7 dias"
+    actionButtonText="Ver mais"
+    onPressActionButton={()=>{}}>
+      
       <FlatList
         data={entries}
-        renderItem={({item}) => (
-        <View>
-          <Text style={styles.entry}>
-            - {item.description} - ${item.amount}
-          </Text>
-          <Button title={item.id}
-          onPress={()=> navigation.navigate('NewEntry', {entry:item})}
-          />
-        </View>  
-        )}
+        keyExtractor={item => item.id}
+        renderItem={({item}) => <EntryListItem entry={item}/>}
       />
-    </View>
+    </Container>
   );
 };
 
