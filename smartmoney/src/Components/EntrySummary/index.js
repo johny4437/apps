@@ -10,12 +10,14 @@ const entriesGrouped = [
     {key:'3', description:'Aluguel', amount:120},
     {key: '4', description:'Lazer', amount:250}
 ];
-const EntrySummary = () => {
+
+const EntrySummary = ({onPressActionButton}) => {
     return (
         <Container  
         title="Categorias"
         actionLabelText="Últimos 7 dias "
         actionButtonText="Ver Mais"
+        onPressActionButton={onPressActionButton}
         >
             
             <EntrySummaryList entriesGrouped={entriesGrouped}  />

@@ -6,7 +6,7 @@ import Container from '../Core/Container';
 
 import {getEntries} from '../../Services/Entries';
 
-const EntryList = ({navigation}) => {
+const EntryList = ({onEntryPress, onPressActionButton}) => {
   [entries, setEntries] = useState([]);
 
   useEffect(() => {
@@ -24,12 +24,22 @@ const EntryList = ({navigation}) => {
     <Container  title="Últimos lançamentos"
     actionLabelText="últimos 7 dias"
     actionButtonText="Ver mais"
-    onPressActionButton={()=>{}}>
+    onPressActionButton={onPressActionButton}>
       
       <FlatList
         data={entries}
         keyExtractor={item => item.id}
-        renderItem={({item}) => <EntryListItem entry={item}/>}
+        renderItem={({item, index}) => (
+        
+        <EntryListItem entry={item}
+        isFirstItem ={index === 0}
+        isLastItem = {index === entries.length -1}
+        onEntryPress={onEntryPress} 
+        
+        />
+       
+        
+        )}
       />
     </Container>
   );
