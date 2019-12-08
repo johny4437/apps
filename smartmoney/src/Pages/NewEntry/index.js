@@ -5,6 +5,7 @@ import {saveEntry} from '../../Services/Entries';
 import {deleteEntry} from '../../Services/Entries';
 import NewEntryInput from './NewEntryInput';
 import BalancePanelLabel from '../../Components/BalancePanel/BalancePanelLabel';
+import NewEntryCategoryPicker from './NewEntryCategoryPicker';
 import Colors from '../../styles/Colors';
 
 const NewEntry = ({navigation}) => {
@@ -16,7 +17,7 @@ const NewEntry = ({navigation}) => {
     entryAt: new Date(),
   });
 
-  const [amount, setAmount] = useState(`${entry.amount}`);
+  const [amount, setAmount] = useState(entry.amount);
 
   const isValid = ()=> {
 
@@ -54,7 +55,7 @@ const NewEntry = ({navigation}) => {
       <View>
        <NewEntryInput value={amount} onChangeValue={setAmount}/>
          
-          <TextInput style={styles.input} />
+          <NewEntryCategoryPicker/>
         <Button title="GPS" />
         <Button title="Camera" />
       </View>
